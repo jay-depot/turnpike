@@ -1,4 +1,4 @@
 turnpike
 ========
 
-A permissive, flexible Node.js MVC framework
+A stylistically permissive, flexible MVC framework for Node.js
