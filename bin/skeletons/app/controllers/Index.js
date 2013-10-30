@@ -4,7 +4,7 @@
 var turnpike = require('turnpike');
 
 module.exports = function(req, res, body, path) {
-  var controller = turnpike.EndpointController.extend(req, res, body, path);
+  var controller = turnpike.EndpointController.extend(this);
   this.public = controller.public;
   this.protected = controller.protected;
 
