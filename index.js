@@ -1,7 +1,7 @@
 /**
  * Turnpike.JS
  *
- * A lightweight and politely opinionated MVC framework for Node.js. Turnpike can used as a traditional
+ * A lightweight and politely opinionated MVC framework for Node.js. Turnpike can be used as a traditional
  * framework, with code generation and rapid deployment, or invoked as a library for more obscure use cases.
  *
  * Within the framework, some elements will be documented as "plumbing". If you are using Turnpike as a rapid
