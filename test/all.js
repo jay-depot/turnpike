@@ -3,17 +3,18 @@
  */
 
 var fs = require('fs');
-var Test = require('test');
 var files = fs.readdirSync(fs.realpathSync('./test'));
 
+console.log(files);
 
 for (var i in files) {
+  var pattern = /^(test)\w*\.js$/;
   if (files.hasOwnProperty(i)) {
-    var pattern = /^test\w*\.js$/;
-    if (pattern.exec(files[i])) {
-      console.log(files[i]);
-      var file = require('./' + files[i].replace(/\.js/, ''));
-      Test.run(file);
+    pattern.lastIndex = 0;
+    if (pattern.test(files[i])) {
+      exports[files[i]] = require('./' + files[i].replace(/\.js/, ''));
     }
   }
 }
+
+require('test').run(exports);
