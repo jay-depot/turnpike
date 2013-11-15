@@ -5,7 +5,7 @@
 var Router = require('../lib/Router');
 
 exports['test create new router from object'] = function(assert) {
-  Router.routes({"test":"Test"});
+  Router.routes({"/test":"Test"});
 };
 
 exports['test root route resolves properly'] = function(assert) {
@@ -21,7 +21,7 @@ exports['test url not in table resolves to 404'] = function(assert) {
 };
 
 exports['test static routes resolve properly'] = function(assert) {
-  Router.routes({"test" : "Test", "example/subpath" : "Example"});
+  Router.routes({"/test" : "Test", "/example/subpath" : "Example"});
   var route = Router.resolve("/test");
   assert.equal(route.controller, "Test", "Expected: 'Test'");
   route = Router.resolve('/test/passes');
@@ -33,14 +33,14 @@ exports['test static routes resolve properly'] = function(assert) {
 };
 
 exports['test routes with one variable resolve properly'] = function(assert) {
-  Router.routes({"test/:var1" : "Test"});
+  Router.routes({"/test/:var1" : "Test"});
   var route = Router.resolve("/test");
   assert.equal(route.controller, false, "Expected: false");
   route = Router.resolve("/test/passes/with-flying-colors");
   assert.equal(route.controller, false, "Expected: false");
   route = Router.resolve("/test/passes");
   assert.equal(route.controller, "Test", "Expected: 'Test'");
-  assert.equal(route.var1, "passes", "Expected: var1 == 'passes'");
+  assert.equal(route.params.var1, "passes", "Expected: var1 == 'passes'");
   route = Router.resolve("/test/passes/with-flying-colors");
   assert.equal(route.controller, false, "Expected: false");
 };
