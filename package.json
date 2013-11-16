@@ -23,7 +23,7 @@
     "routes": "~0.2.0",
     "jsonfile": "~1.1.0",
     "underscore": "~1.5.2",
-    "stylus": "~0.38.0"
+    "stylus": "~0.40.2"
   },
   "devDependencies": {
     "test": "~0.6.0"
