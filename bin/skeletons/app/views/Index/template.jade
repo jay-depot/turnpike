@@ -19,15 +19,15 @@ html
                     | to modify this template.
                 li
                     | Run
-                    code turnpike new endpoint [endpoint_name]
+                    code turnpike create endpoint [endpoint_name]
                     | to add a new endpoint routing to your application.
                     | This will generate a controller and view of the same name which will serve requests against this new
                     | path.
                 li
                     | Run
-                    code turnpike new model [model_name]
+                    code turnpike create model [model_name]
                     | to generate a default MySQL model skeleton
-                    code turnpike new model [model_name] using [database_engine]
+                    code turnpike create model [model_name] using [database_engine]
                     | to generate a model skeleton using an alternative DB engine.
                     | Run
                     code turnpike show engines database
