@@ -1,14 +1,14 @@
 /**
  * Basic Turnpike app initializer.
  *
- * Reads the routes.json and config.json files, bootstraps Turnpike, sets up routes with associated
- * controllers and starts the Turnpike event loop.
+ * Starts the Turnpike event loop.
+ *
+ * DO NOT MODIFY THIS FILE!!!
+ * If you do, then the behavior of your app will be inconsistent depending on how it was started,
+ * which means you will not be able to use testdrive to reliably debug.
  *
  */
 var turnpike = require('turnpike');
-
-turnpike.configure(JSON.parse(require('./config.json')));
-turnpike.routes(JSON.parse(require('./routes.json')));
 
 // Start the server
 turnpike.drive();
