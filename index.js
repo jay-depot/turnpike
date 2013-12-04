@@ -20,6 +20,7 @@ var turnpike = {};
 
 //Porcelain interfaces:
 turnpike.EndpointController = require("./lib/EndpointController");
+turnpike.routes = require("./lib/Router").routes;
 turnpike.drive = require("./lib/Drive");
 
 //Plumbing interfaces:
