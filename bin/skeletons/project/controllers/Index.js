@@ -6,8 +6,9 @@ var util = require('util');
 
 function Controller(connection) {
   turnpike.EndpointController.call(this, connection);
-
 }
+util.inherits(Controller, turnpike.EndpointController);
+
 Controller.prototype._GET = function(readyCallback) {
   turnpike.invokeView("Index");
   readyCallback();
@@ -24,7 +25,5 @@ Controller.prototype._POST = function(readyCallback) {
 Controller.prototype._DELETE = function(readyCallback) {
   readyCallback();
 };
-
-util.inherits(Controller, turnpike.EndpointController);
 
 module.exports = Controller;
