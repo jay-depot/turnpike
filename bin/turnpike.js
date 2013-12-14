@@ -29,8 +29,8 @@ handler.create = function(target, modifiers) {
     console.log('creating project: ' + project.name + ' in ' + project.dir);
     fs.copy(bindir + '/skeletons/project', project.dir);
     //TODO: Write out the correct values into package.json so npm install will pull in Turnpike and the new project can actually run.
-    console.log('Your new project, ' + project.name + ', was created in ' + 
-      path.normalize(project.dir) + 
+    console.log('Your new project, ' + project.name + ', was created in ' +
+      path.normalize(project.dir) +
       ' You may now enter that directory and start your server by running turnpike drive.');
   };
 
@@ -45,10 +45,9 @@ handler.drive = function(target, modifiers) {
 };
 
 handler.testdrive = function(target, modifiers) {
-  console.log("Starting a test drive");
+  console.log("Starting a test drive on port " + require('../lib/GlobalConfig').port);
   require('../lib/GlobalConfig').testing = true;
-  drive = require('../lib/Drive');
-  drive();
+  handler.drive();
 };
 
 if (require.main === module) {
@@ -56,15 +55,15 @@ if (require.main === module) {
     //console.log(bindir);
     //console.log(moddir);
     //console.dir(argv);
-    
+
     var sentence = {
       verb: argv._[0],
       object: argv._[1],
       modifiers: argv._.slice(2)
     };
-    
+
     //console.dir(sentence);
-    
+
     if (typeof handler[sentence.verb] === "function") {
       handler[sentence.verb](sentence.object, sentence.modifiers);
     }
