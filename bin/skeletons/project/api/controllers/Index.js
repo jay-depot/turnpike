@@ -2,7 +2,7 @@
  * The default controller for your home page.
  */
 var turnpike = require('turnpike');
-var util = require('util');
+var util     = require('util');
 
 function Controller(connection) {
   turnpike.EndpointController.call(this, connection);
@@ -10,7 +10,7 @@ function Controller(connection) {
 util.inherits(Controller, turnpike.EndpointController);
 
 Controller.prototype._GET = function(readyCallback) {
-  turnpike.invokeView("Index");
+  connection.status(200).response(turnpike.invokeView("Index"));
   readyCallback();
 };
 
