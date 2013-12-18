@@ -1,7 +1,7 @@
 /**
  * Turnpike.JS
  *
- * A lightweight and politely opinionated MVC framework for Node.js. Turnpike can be used as a traditional
+ * A lightweight and politely opinionated HMVC framework for Node.js. Turnpike can be used as a traditional
  * framework, with code generation and rapid deployment, or invoked as a library for more obscure use cases.
  *
  * Within the framework, some elements will be documented as "plumbing". If you are using Turnpike as a rapid
@@ -20,11 +20,15 @@ var turnpike = {};
 
 //Porcelain interfaces:
 turnpike.EndpointController = require("./lib/EndpointController");
-turnpike.routes = require("./lib/Router").routes;
-turnpike.drive = require("./lib/Drive");
+turnpike.routes             = require("./lib/Router").routes;
+turnpike.drive              = require("./lib/Drive");
+turnpike.invoke             = require("./AutoLoader").invoke;
+turnpike.invokeModel        = require("./AutoLoader").invokeModel;
+turnpike.invokeView         = require("./AutoLoader").invokeView;
+turnpike.invokeController   = require("./AutoLoader").invokeController;
 
 //Plumbing interfaces:
-turnpike.ModelPool = require("./lib/ModelPool");
-turnpike.Connection = require("./lib/Connection");
+turnpike.ModelPool          = require("./lib/ModelPool");
+turnpike.Connection         = require("./lib/Connection");
 
 module.exports = turnpike;
