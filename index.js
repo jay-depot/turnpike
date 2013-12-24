@@ -22,10 +22,10 @@ var turnpike = {};
 turnpike.EndpointController = require("./lib/EndpointController");
 turnpike.routes             = require("./lib/Router").routes;
 turnpike.drive              = require("./lib/Drive");
-turnpike.invoke             = require("./AutoLoader").invoke;
-turnpike.invokeModel        = require("./AutoLoader").invokeModel;
-turnpike.invokeView         = require("./AutoLoader").invokeView;
-turnpike.invokeController   = require("./AutoLoader").invokeController;
+turnpike.invoke             = require("./lib/AutoLoader").invoke;
+turnpike.invokeModel        = require("./lib/AutoLoader").invokeModel;
+turnpike.invokeView         = require("./lib/AutoLoader").invokeView;
+turnpike.invokeController   = require("./lib/AutoLoader").invokeController;
 
 //Plumbing interfaces:
 turnpike.ModelPool          = require("./lib/ModelPool");

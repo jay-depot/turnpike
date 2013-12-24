@@ -3,6 +3,7 @@
  */
 var turnpike = require('turnpike');
 var util     = require('util');
+var _        = require('underscore');
 
 function Controller(connection) {
   turnpike.EndpointController.call(this, connection);
@@ -10,7 +11,11 @@ function Controller(connection) {
 util.inherits(Controller, turnpike.EndpointController);
 
 Controller.prototype._GET = function(readyCallback) {
-  connection.status(200).response(turnpike.invokeView("Index"));
+  var view = turnpike.invokeView('Index');
+  view = new view();
+  view.mode('main').render(_(function(html) {
+    this.connection.status(200).response(html);
+  }).(this));
   readyCallback();
 };
 
