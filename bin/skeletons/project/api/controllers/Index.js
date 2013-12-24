@@ -15,7 +15,7 @@ Controller.prototype._GET = function(readyCallback) {
   view = new view();
   view.mode('main').render(_(function(html) {
     this.connection.status(200).response(html);
-  }).(this));
+  }).bind(this));
   readyCallback();
 };
 
