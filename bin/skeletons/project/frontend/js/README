@@ -1,0 +1,3 @@
+Put your front-end Javascript here. It will be combined with the Turnpike
+front-end framework, passed through UglifyJS, and served by the Scripts
+endpoint controller.
