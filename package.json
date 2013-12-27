@@ -1,6 +1,6 @@
 {
   "name": "turnpike",
-  "description": "A lightweight MVC framework with flexible opinions.",
+  "description": "A lightweight HMVC framework with flexible opinions.",
   "version": "0.0.1",
   "homepage": "https://github.com/jay-depot/turnpike",
   "repository": "https://github.com/jay-depot/turnpike.git",
