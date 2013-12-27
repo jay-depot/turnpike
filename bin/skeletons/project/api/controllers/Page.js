@@ -7,16 +7,22 @@ var _        = require('underscore');
 
 function Controller(connection) {
   turnpike.EndpointController.call(this, connection);
+
+  this.deliver = function() {
+    var view = turnpike.invokeView('Page');
+    view = new view();
+    view.mode('main').data({
+      'body': connection.response()
+    }).render(_(function(html) {
+      connection.response(html).send();
+    }).bind(this));
+  };
 }
 util.inherits(Controller, turnpike.EndpointController);
 
+
 Controller.prototype._GET = function(readyCallback) {
-  var view = turnpike.invokeView('Index');
-  view = new view();
-  view.mode('main').render(_(function(html) {
-    this.connection.status(200).response(html);
-    readyCallback();
-  }).bind(this));
+  process.nextTick(readyCallback);
 };
 
 Controller.prototype._PUT = function(readyCallback) {
