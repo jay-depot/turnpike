@@ -1,11 +1,11 @@
 /**
- * The default controller for your home page.
+ * The default controller for your page structure.
  */
 var turnpike = require('turnpike');
 var util     = require('util');
 var _        = require('underscore');
 
-function Controller(connection) {
+function Page(connection) {
   turnpike.EndpointController.call(this, connection);
 
   this.deliver = function() {
@@ -18,23 +18,23 @@ function Controller(connection) {
     }).bind(this));
   };
 }
-util.inherits(Controller, turnpike.EndpointController);
+util.inherits(Page, turnpike.EndpointController);
 
 
-Controller.prototype._GET = function(readyCallback) {
+Page.prototype._GET = function(readyCallback) {
   process.nextTick(readyCallback);
 };
 
-Controller.prototype._PUT = function(readyCallback) {
+Page.prototype._PUT = function(readyCallback) {
   process.nextTick(readyCallback);
 };
 
-Controller.prototype._POST = function(readyCallback) {
+Page.prototype._POST = function(readyCallback) {
   process.nextTick(readyCallback);
 };
 
-Controller.prototype._DELETE = function(readyCallback) {
+Page.prototype._DELETE = function(readyCallback) {
   process.nextTick(readyCallback);
 };
 
-module.exports = Controller;
+module.exports = Page;

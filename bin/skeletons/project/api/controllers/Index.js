@@ -5,12 +5,12 @@ var turnpike = require('turnpike');
 var util     = require('util');
 var _        = require('underscore');
 
-function Controller(connection) {
+function Index(connection) {
   turnpike.EndpointController.call(this, connection);
 }
-util.inherits(Controller, turnpike.EndpointController);
+util.inherits(Index, turnpike.EndpointController);
 
-Controller.prototype._GET = function(readyCallback) {
+Index.prototype._GET = function(readyCallback) {
   var view = turnpike.invokeView('Index');
   view = new view();
   view.mode('main').render(_(function(html) {
@@ -19,16 +19,16 @@ Controller.prototype._GET = function(readyCallback) {
   }).bind(this));
 };
 
-Controller.prototype._PUT = function(readyCallback) {
+Index.prototype._PUT = function(readyCallback) {
   process.nextTick(readyCallback);
 };
 
-Controller.prototype._POST = function(readyCallback) {
+Index.prototype._POST = function(readyCallback) {
   process.nextTick(readyCallback);
 };
 
-Controller.prototype._DELETE = function(readyCallback) {
+Index.prototype._DELETE = function(readyCallback) {
   process.nextTick(readyCallback);
 };
 
-module.exports = Controller;
+module.exports = Index;
