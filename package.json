@@ -23,7 +23,7 @@
     "routes": "~0.2.0",
     "fs-extra": "~0.8.1",
     "underscore": "~1.5.2",
-    "stylus": "~0.40.2",
+    "less": "~1.5.1",
     "optimist": "0.6.0"
   },
   "devDependencies": {
