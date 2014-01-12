@@ -27,6 +27,7 @@
     "optimist": "~0.6.0",
     "negotiator": "~0.3.0",
     "uglify-js": "~2.4.8",
+    "hooks": "~0.3.2",
     "stylus": "~0.40.2"
   },
   "devDependencies": {
