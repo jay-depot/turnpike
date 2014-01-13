@@ -5,8 +5,6 @@
 var fs = require('fs');
 var files = fs.readdirSync(fs.realpathSync('./test'));
 
-console.log(files);
-
 for (var i in files) {
   var pattern = /^(test)\w*\.js$/;
   if (files.hasOwnProperty(i)) {
