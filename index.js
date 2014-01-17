@@ -19,16 +19,17 @@
 var turnpike = {};
 
 //Porcelain interfaces:
-turnpike.EndpointController = require("./lib/EndpointController");
-turnpike.routes             = require("./lib/Router").routes;
-turnpike.drive              = require("./lib/Drive");
-turnpike.invoke             = require("./lib/AutoLoader").invoke;
-turnpike.invokeModel        = require("./lib/AutoLoader").invokeModel;
-turnpike.invokeView         = require("./lib/AutoLoader").invokeView;
-turnpike.invokeController   = require("./lib/AutoLoader").invokeController;
+turnpike.EndpointController = require('./lib/EndpointController');
+turnpike.routes             = require('./lib/Router').routes;
+turnpike.drive              = require('./lib/Drive').drive;
+turnpike.Driver             = require('./lib/Drive').Driver;
+turnpike.invoke             = require('./lib/AutoLoader').invoke;
+turnpike.invokeModel        = require('./lib/AutoLoader').invokeModel;
+turnpike.invokeView         = require('./lib/AutoLoader').invokeView;
+turnpike.invokeController   = require('./lib/AutoLoader').invokeController;
 
 //Plumbing interfaces:
-turnpike.ModelPool          = require("./lib/ModelPool");
-turnpike.Connection         = require("./lib/Connection");
+turnpike.ModelPool          = require('./lib/ModelPool');
+turnpike.Connection         = require('./lib/Connection'  );
 
 module.exports = turnpike;

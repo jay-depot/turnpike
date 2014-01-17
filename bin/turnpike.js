@@ -2,11 +2,11 @@
 /**
  * Turnpike.JS command line utility.
  */
-var path = require('path');
-var fs = require('fs-extra');
-var argv = require('optimist').argv;
-var bindir = path.dirname(module.filename);
-var moddir = path.normalize(bindir + '/..');
+var path    = require('path');
+var fs      = require('fs-extra');
+var argv    = require('optimist').argv;
+var bindir  = path.dirname(module.filename);
+var moddir  = path.normalize(bindir + '/..');
 var handler = {};
 
 handler.create = function(target, modifiers) {
@@ -22,10 +22,12 @@ handler.create = function(target, modifiers) {
 
     project.name = modifiers.join(' ');
     project.dir = modifiers.join('-').toLowerCase();
+
     if (fs.existsSync(project.dir)) {
       console.log("Error: directory " + project.dir + " already exists. Not modified.");
       process.exit(2);
     }
+
     console.log('creating project: ' + project.name + ' in ' + project.dir);
     fs.copy(bindir + '/skeletons/project', project.dir);
     //TODO: Write out the correct values into package.json so npm install will pull in Turnpike and the new project can actually run.
@@ -34,13 +36,18 @@ handler.create = function(target, modifiers) {
       ' You may now enter that directory and start your server by running turnpike drive.');
   };
 
+  targets.controller = function(){};
+  targets.model = function(){};
+  targets.view = function(){};
+  targets.endpoint = function(){};
+
   if (typeof targets[target] === "function") {
     targets[target]();
   }
 };
 
 handler.drive = function(target, modifiers) {
-  drive = require('../lib/Drive');
+  drive = require('../lib/Drive').drive;
   drive();
 };
 
@@ -48,6 +55,12 @@ handler.testdrive = function(target, modifiers) {
   console.log("Starting a test drive on port " + require('../lib/GlobalConfig').port);
   require('../lib/GlobalConfig').testing = true;
   handler.drive();
+};
+
+handler.override = function(target, modifiers) {
+  // Copies a core Turnpike Model/View/Controller into the current project,
+  // and rewrites the require()'s to say 'turnpike'.
+  // This allows you to customize these built-ins for your project easily.
 };
 
 if (require.main === module) {
