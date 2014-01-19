@@ -1,8 +1,7 @@
 /**
  * @file init.js
  * Custom initialization for your app. Use this space to attach any pre/post
- * hooks your setup will need. This is executed after the Router and
- * AutoLoader have been set up, but before drive() is called.
+ * hooks your setup will need.
  */
 
 var turnpike = require('turnpike');
