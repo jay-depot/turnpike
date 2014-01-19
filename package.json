@@ -11,7 +11,9 @@
     "lib": "./lib",
     "test": "./test"
   },
-  "scripts": { "test" : "node ./test/all.js" } ,
+  "scripts": {
+    "test": "node ./test/all.js"
+  },
   "bin": {
     "turnpike": "./bin/turnpike.js"
   },
@@ -28,7 +30,8 @@
     "negotiator": "~0.3.0",
     "uglify-js": "~2.4.8",
     "hooks": "~0.3.2",
-    "stylus": "~0.40.2"
+    "stylus": "~0.40.2",
+    "connect": "~2.12.0"
   },
   "devDependencies": {
     "test": "~0.6.0"
