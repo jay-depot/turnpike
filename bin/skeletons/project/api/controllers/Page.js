@@ -6,16 +6,21 @@ var util     = require('util');
 var _        = require('underscore');
 
 function Page(connection) {
+  this.data = {
+    'body':  connection.response(),
+    'title': connection.controller.title
+  };
+
   turnpike.EndpointController.call(this, connection);
 
+  //TODO: Should we send error if we get here and the content type isn't HTML?
   this.deliver = function() {
     var view = turnpike.invokeView('Page');
     view = new view();
-    view.mode('main').data({
-      'body': connection.response()
-    }).render(_(function(html) {
-      connection.response(html).send();
-    }).bind(this));
+    view.mode('main').data(this.data)
+      .render(function(html) {
+        connection.response(html).send();
+      });
   };
 }
 util.inherits(Page, turnpike.EndpointController);
