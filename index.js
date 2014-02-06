@@ -20,6 +20,8 @@ var turnpike = {};
 
 //Porcelain interfaces:
 turnpike.EndpointController = require('./lib/EndpointController');
+turnpike.MemoryModel        = require('./lib/MemoryModel');
+turnpike.KnexModel          = require('./lib/KnexModel');
 turnpike.routes             = require('./lib/Router').routes;
 turnpike.drive              = require('./lib/Drive').drive;
 turnpike.Driver             = require('./lib/Drive').Driver;
