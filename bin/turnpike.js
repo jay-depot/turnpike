@@ -5,6 +5,7 @@
 var path    = require('path');
 var fs      = require('fs-extra');
 var argv    = require('optimist').argv;
+var _       = require('underscore');
 var bindir  = path.dirname(module.filename);
 var moddir  = path.normalize(bindir + '/..');
 var handler = {};
@@ -12,7 +13,7 @@ var handler = {};
 handler.create = function(target, modifiers) {
   var targets = {};
 
-  targets.project = function(){
+  targets.project = function() {
     var project = {};
 
     if (modifiers.length < 1) {
@@ -36,10 +37,26 @@ handler.create = function(target, modifiers) {
       ' You may now enter that directory and start your server by running turnpike drive.');
   };
 
-  targets.controller = function(){};
+  targets.controller = function(attachModel) {
+    var template, output, name = modifiers[0];
+    attachModel = attachModel || false;
+    template = _.template(fs.readFileSync(path.join(bindir, 'skeletons', 'controller', 'template.ejs'), {'encoding': 'utf8'}));
+
+    output = template({
+      'name': name,
+      'attachModel': attachModel
+    });
+
+    fs.writeFileSync(path.join('api', 'controllers', name + '.js'), output);
+  };
+
   targets.model = function(){};
+
   targets.view = function(){};
+
   targets.endpoint = function(){};
+
+  targets.entity = function(){};
 
   if (typeof targets[target] === "function") {
     targets[target]();
