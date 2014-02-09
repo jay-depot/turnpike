@@ -32,6 +32,6 @@ turnpike.invokeController   = require('./lib/AutoLoader').invokeController;
 
 //Plumbing interfaces:
 turnpike.ModelPool          = require('./lib/ModelPool');
-turnpike.Connection         = require('./lib/Connection'  );
+turnpike.Connection         = require('./lib/Connection');
 
 module.exports = turnpike;
