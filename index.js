@@ -29,6 +29,7 @@ turnpike.invoke             = require('./lib/AutoLoader').invoke;
 turnpike.invokeModel        = require('./lib/AutoLoader').invokeModel;
 turnpike.invokeView         = require('./lib/AutoLoader').invokeView;
 turnpike.invokeController   = require('./lib/AutoLoader').invokeController;
+turnpike.GlobalConfig       = require('./lib/GlobalConfig');
 
 //Plumbing interfaces:
 turnpike.ModelPool          = require('./lib/ModelPool');
