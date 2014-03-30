@@ -50,13 +50,25 @@ handler.create = function(target, modifiers) {
     fs.writeFileSync(path.join('api', 'controllers', name + '.js'), output);
   };
 
-  targets.model = function(){};
+  targets.model = function() {};
 
-  targets.view = function(){};
+  targets.view = function() {};
 
-  targets.endpoint = function(){};
+  targets.endpoint = function() {};
 
-  targets.entity = function(){};
+  targets.endpoints = function() {};
+
+  targets.entity = function() {};
+
+  if (typeof targets[target] === "function") {
+    targets[target]();
+  }
+};
+
+handler.verify = function(target, modifiers) {
+  var targets = {};
+
+  targets.routes = require('./support/verify_routes');
 
   if (typeof targets[target] === "function") {
     targets[target]();
