@@ -18,6 +18,11 @@
 
 var turnpike = {};
 
+var _  = require('underscore');
+_.str = require('underscore.string');
+_.mixin(_.str.exports());
+_.str.include('Underscore.string', 'string'); // => true
+
 //Porcelain interfaces:
 turnpike.EndpointController = require('./lib/EndpointController');
 turnpike.MemoryModel        = require('./lib/MemoryModel');
@@ -34,5 +39,8 @@ turnpike.GlobalConfig       = require('./lib/GlobalConfig');
 //Plumbing interfaces:
 turnpike.ModelPool          = require('./lib/ModelPool');
 turnpike.Connection         = require('./lib/Connection');
+
+//nice to have:
+turnpike._                  = _;
 
 module.exports = turnpike;
