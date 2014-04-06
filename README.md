@@ -27,6 +27,7 @@ $ npm install -g turnpike
 $ turnpike create project Turnpike Example
 $ cd turnpike-example
 $ npm init
+$ npm install
 $ turnpike testdrive
 ```
 Then just visit http://localhost:1337
