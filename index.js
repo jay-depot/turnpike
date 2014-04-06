@@ -16,9 +16,10 @@
  * existing plumbing interfaces with few to no changes without a bump in the major version number.
  */
 
-var turnpike = {};
+var turnpike = {},
+    _        = require('underscore');
 
-var _  = require('underscore');
+//Setup Underscore.js with Underscore String.
 _.str = require('underscore.string');
 _.mixin(_.str.exports());
 _.str.include('Underscore.string', 'string'); // => true
@@ -35,10 +36,17 @@ turnpike.invokeModel        = require('./lib/AutoLoader').invokeModel;
 turnpike.invokeView         = require('./lib/AutoLoader').invokeView;
 turnpike.invokeController   = require('./lib/AutoLoader').invokeController;
 turnpike.GlobalConfig       = require('./lib/GlobalConfig');
+turnpike.ViewBase           = require('./lib/ViewBase');
 
 //Plumbing interfaces:
-turnpike.ModelPool          = require('./lib/ModelPool');
-turnpike.Connection         = require('./lib/Connection');
+turnpike.AutoLoader         = require('./lib/AutoLoader'); //Probes your project for its components. Supports an override heirarchy.
+turnpike.ModelPool          = require('./lib/ModelPool'); //AutoLoader uses this to find model instances
+turnpike.Connection         = require('./lib/Connection'); //Your controllers get instances of this
+turnpike.ActionParser       = require('./lib/ActionParser'); //Turnpike server uses this to choose contoller actions from your routes.json file
+turnpike.AccessControl      = require('./lib/AccessControl'); //Used by Turnpike Server to parse access rules
+turnpike.Router             = require('./lib/Router'); //It's a router. 'nuff said.
+turnpike.ViewBuilder        = require('./lib/ViewBuilder'); //Constructs View classes from a folder full of Jade templates
+turnpike.server             = require('./lib/turnpike_server'); //The meat of what we pass to Connect for handling incoming requests.
 
 //nice to have:
 turnpike._                  = _;
