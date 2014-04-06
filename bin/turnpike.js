@@ -13,6 +13,20 @@ var handler = {};
 handler.create = function(target, modifiers) {
   var targets = {};
 
+  targets.access = function() {
+    var template,
+        output,
+        name = modifiers[0];
+
+    template = _.template(fs.readFileSync(path.join(bindir, 'skeletons', 'access', 'template.ejs'), {'encoding': 'utf8'}));
+
+    output = template({
+      'name': name
+    });
+
+    fs.writeFileSync(path.join('api', 'access', name + '.js'), output);
+  }
+
   targets.project = function() {
     var project = {};
 
@@ -38,7 +52,10 @@ handler.create = function(target, modifiers) {
   };
 
   targets.controller = function(attachModel) {
-    var template, output, name = modifiers[0];
+    var template,
+        output,
+        name = modifiers[0];
+
     attachModel = attachModel || false;
     template = _.template(fs.readFileSync(path.join(bindir, 'skeletons', 'controller', 'template.ejs'), {'encoding': 'utf8'}));
 
