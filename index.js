@@ -37,6 +37,8 @@ turnpike.invokeView         = require('./lib/AutoLoader').invokeView;
 turnpike.invokeController   = require('./lib/AutoLoader').invokeController;
 turnpike.GlobalConfig       = require('./lib/GlobalConfig');
 turnpike.ViewBase           = require('./lib/ViewBase');
+turnpike.setSessionStorage  = require('./lib/Session').setSessionStorage;
+turnpike.useCsrf            = require('./lib/Session').useCsrf;
 
 //Plumbing interfaces:
 turnpike.AutoLoader         = require('./lib/AutoLoader'); //Probes your project for its components. Supports an override heirarchy.
@@ -47,6 +49,7 @@ turnpike.AccessControl      = require('./lib/AccessControl'); //Used by Turnpike
 turnpike.Router             = require('./lib/Router'); //It's a router. 'nuff said.
 turnpike.ViewBuilder        = require('./lib/ViewBuilder'); //Constructs View classes from a folder full of Jade templates
 turnpike.server             = require('./lib/turnpike_server'); //The meat of what we pass to Connect for handling incoming requests.
+turnpike.Session            = require('./lib/Session');
 
 //nice to have:
 turnpike._                  = _;
