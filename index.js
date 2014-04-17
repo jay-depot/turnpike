@@ -53,5 +53,7 @@ turnpike.Session            = require('./lib/Session');
 
 //nice to have:
 turnpike._                  = _;
+turnpike.connect            = require('connect'); //returns the exact version of connect framework Turnpike is using.
+                                                  //VERY helpful when settng up session storage in your app.
 
 module.exports = turnpike;
