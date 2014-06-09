@@ -14,12 +14,18 @@ Built on Connect, Hooks and Underscore, Turnpike aims to provide a similar produ
  - Smart configuration system that automatically provides a fallback chain from Environment variables to project defaults and finally framework defaults.
  - Access control rules are automatically loaded from a separate module than the controller providing the endpoints being secured. This provides a nice, natural separation of concerns for access rules.
  - RESTful response format negotiation. Built-in support for HTML, and JSON responses, which are automatically negotiated based on the Accept header from the client. Adding additional formats is done on a per-controller basis (project-wide is coming soon) and is very straightforward.
+ - Sessions set up using Connect, you just need to pick a storage engine and pass it into one method call.
+ - Useful session extensions, like attaching messages for the user
+ - Command line tools for stub generation, route verification
 
 ## Future Roadmap:
- - Base model classes to provide MongoDB and SQL based persistence with an interface very similar to ActiveRecord.
- - Session support
+ - Plug-in API
  - A form building API with CSRF protection (based on Connect, of course)
  - Automatic router endpoints based on controller names.
+ - Multipart file uploads made easy.
+ - Compile back-end templates into front-end Javascript code.
+ - Pluggable template engines
+ - Simplify new project generation and setup down to one or two commands.
 
 ## Getting started
 ```bash
@@ -34,3 +40,4 @@ Then just visit http://localhost:1337
 
 ## Contributing
 Contributions are always welcome. The most useful contribution is simply grabbing the framework, playing with it and giving suggestions for what it needs to be complete. Aside from that, documentation and tests are probably the biggest needs.
+Once the framework is fully instrumented with tests and code coverage detection, I will mark that as the 1.0.0 release.
