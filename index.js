@@ -39,6 +39,7 @@ turnpike.GlobalConfig       = require('./lib/GlobalConfig');
 turnpike.ViewBase           = require('./lib/ViewBase');
 turnpike.setSessionStorage  = require('./lib/Session').setSessionStorage;
 turnpike.useCsrf            = require('./lib/Session').useCsrf;
+turnpike.fieldMap            = require('./lib/fieldMap.js');
 
 //Plumbing interfaces:
 turnpike.AutoLoader         = require('./lib/AutoLoader'); //Probes your project for its components. Supports an override heirarchy.
