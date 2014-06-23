@@ -3,7 +3,7 @@
  */
 var turnpike = require('turnpike');
 var util     = require('util');
-var _        = require('underscore');
+var _        = turnpike._;
 
 function Index(connection) {
   turnpike.EndpointController.call(this, connection);
