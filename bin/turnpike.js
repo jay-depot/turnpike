@@ -69,7 +69,20 @@ handler.create = function(target, modifiers) {
 
   targets.model = function() {};
 
-  targets.view = function() {};
+  targets.view = function() {
+    if (modifiers.length < 1) {
+      console.error('You asked me to create a view, but did not give a name');
+      process.exit(2);
+    }
+    else if (modifiers.length === 1 && modifiers[0].toLowerCase() === 'for') {
+      console.error('You asked me to create a view for a model, but did not give a name');
+      process.exit(2);
+    }
+    else {
+      var create_view = require('./support/create_view').create_view;
+      create_view(modifiers, path.join(bindir, 'skeletons'));
+    }
+  };
 
   targets.endpoint = function() {};
 

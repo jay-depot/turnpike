@@ -11,6 +11,10 @@ function MockModel() {
     this.name = undefined;
   };
 
+  this.fields = function() {
+    return new this.Item();
+  };
+
   this.create = function(data, cb) {
     if (typeof(data) === 'function') {
       cb = data;
@@ -354,7 +358,7 @@ exports['test default index endpoint success'] = function(assert, done) {
   controller.model = model;
 
   controller.index(function() {
-    assert.equal(controller.data.length, 1, 'returned list should have same number of items send back by model');
+    assert.equal(controller.data.items.length, 1, 'returned list should have same number of items send back by model');
     done();
   });
 };
