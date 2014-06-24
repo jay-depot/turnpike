@@ -8,17 +8,14 @@ var indent = "    ";
 var path = require('path');
 var fs = require('fs');
 
-function generate_all_templates_in(BaseModel, name) {
+function generate_all_templates_in(BaseModel, BaseController, name) {
   var model = new BaseModel();
+  var controller = new BaseController();
+  var fieldMapper = controller.fieldMapper;
   var item = model.fields();
-  var form_code = generate_form(item, name);
-  var display_code = generate_display(item, name);
+  var form_code = generate_form(item, fieldMapper, name);
+  var display_code = generate_display(item, fieldMapper, name);
   var current_dir = process.cwd();
-
-  console.dir(model.Item);
-  console.dir(item);
-  console.log(form_code);
-  console.log(display_code);
 
   //create
   fs.writeFileSync(path.join(current_dir, 'api', 'views', name, 'create.jade'), display_code.join('\n'));
@@ -27,17 +24,19 @@ function generate_all_templates_in(BaseModel, name) {
   //edit
   fs.writeFileSync(path.join(current_dir, 'api', 'views', name, 'edit.jade'), display_code.join('\n'));
   //index
-  fs.writeFileSync(path.join(current_dir, 'api', 'views', name, 'index.jade'), generate_index(item, name));
+  fs.writeFileSync(path.join(current_dir, 'api', 'views', name, 'index.jade'), generate_index(item, fieldMapper, name));
   //main
   fs.writeFileSync(path.join(current_dir, 'api', 'views', name, 'main.jade'), display_code.join('\n'));
   //remove_form
   fs.writeFileSync(path.join(current_dir, 'api', 'views', name, 'remove_form.jade'), generate_delete_confirm(display_code));
   //remove
   fs.writeFileSync(path.join(current_dir, 'api', 'views', name, 'remove.jade'), '.confirmation The item was deleted.');
+
+  console.log('Done');
   process.exit(0);
 }
 
-function generate_index(item, name) {
+function generate_index(item, fieldMapper, name) {
   //Returns an array of lines of Jade code. Returns an array so we can loop
   //through it later and further indent the lines for wrapping in additonal
   //markup before flattening into actual code.
@@ -51,9 +50,9 @@ function generate_index(item, name) {
   for (property in item) {
     if (item.hasOwnProperty(property) && typeof(item[property] !== "function")) {
       line = indent + indent;
-      line += 'div.' + property + '-label ' + property + ':';
+      line += 'div.' + fieldMapper(property, true) + '-label ' + property + ':';
       line += '\n' + indent + indent;
-      line += 'div.' + property + '-value #{item.' + property + '}';
+      line += 'div.' + fieldMapper(property, true) + '-value #{item.' + fieldMapper(property, true) + '}';
       template.push(line);
     }
   }
@@ -71,7 +70,7 @@ function generate_delete_confirm(display_code) {
   return code.join('\n') + '\n' + display_code.join('\n');
 }
 
-function generate_form(item, name) {
+function generate_form(item, fieldMapper, name) {
   //Returns an array of lines of Jade code. Returns an array so we can loop
   //through it later and further indent the lines for wrapping in additonal
   //markup before flattening into actual code.
@@ -83,9 +82,9 @@ function generate_form(item, name) {
   for (property in item) {
     if (item.hasOwnProperty(property) && typeof(item[property] !== "function")) {
       line = indent;
-      line += 'label(for="' + property + '") ' + property + ':';
+      line += 'label(for="' + fieldMapper(property, true) + '") ' + property + ':';
       line += '\n' + indent;
-      line += 'input(type="text" name="' + property + '" value=' + property + ')';
+      line += 'input(type="text" name="' + fieldMapper(property, true) + '" value=' + fieldMapper(property, true) + ')';
       template.push(line);
     }
   }
@@ -96,7 +95,7 @@ function generate_form(item, name) {
   return template;
 }
 
-function generate_display(item, name) {
+function generate_display(item, fieldMapper, name) {
   //Returns an array of lines of Jade code. Returns an array so we can loop
   //through it later and further indent the lines for wrapping in additonal
   //markup before flattening into actual code.
@@ -108,9 +107,9 @@ function generate_display(item, name) {
   for (property in item) {
     if (item.hasOwnProperty(property) && typeof(item[property] !== "function")) {
       line = indent;
-      line += 'div.' + property + '-label ' + property + ':';
-      line += '\n' + indent + indent;
-      line += 'div.' + property + '-value #{' + property + '}';
+      line += 'div.' + fieldMapper(property, true) + '-label ' + property + ':';
+      line += '\n' + indent;
+      line += 'div.' + fieldMapper(property, true) + '-value #{' + fieldMapper(property, true) + '}';
       template.push(line);
     }
   }
@@ -122,6 +121,7 @@ function create_view(options) {
   if (options[0].toLowerCase() === "for") {
     //find model, load it, and instantiate an Item() from it.
     var Model;
+    var Controller;
     var current_dir = process.cwd();
 
     try {
@@ -134,6 +134,15 @@ function create_view(options) {
     }
 
     try {
+      Controller = require(path.join(current_dir, 'api', 'controllers', options[1]));
+    }
+    catch (e) {
+      console.error('You asked me to create a view for ' + options[1] +
+        ', but I can not load that controller for some reason.');
+      process.exit(4);
+    }
+
+    try {
       fs.mkdirSync(path.join(current_dir, 'api', 'views', options[1]));
     }
     catch (e) {
@@ -142,7 +151,7 @@ function create_view(options) {
       process.exit(5);
     }
 
-    generate_all_templates_in(Model, options[1]);
+    generate_all_templates_in(Model, Controller, options[1]);
   }
   else {
     //Dump out generic view modes matching the generic controller actions.
