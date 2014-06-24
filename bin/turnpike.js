@@ -80,7 +80,7 @@ handler.create = function(target, modifiers) {
     }
     else {
       var create_view = require('./support/create_view').create_view;
-      create_view(modifiers);
+      create_view(modifiers, path.join(bindir, 'skeletons'));
     }
   };
 

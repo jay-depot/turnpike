@@ -117,13 +117,13 @@ function generate_display(item, fieldMapper, name) {
   return template;
 }
 
-function create_view(options) {
+function create_view(options, skeletons) {
+  var Model;
+  var Controller;
+  var current_dir = process.cwd();
+
   if (options[0].toLowerCase() === "for") {
     //find model, load it, and instantiate an Item() from it.
-    var Model;
-    var Controller;
-    var current_dir = process.cwd();
-
     try {
       Model = require(path.join(current_dir, 'api', 'models', options[1]));
     }
@@ -154,8 +154,19 @@ function create_view(options) {
     generate_all_templates_in(Model, Controller, options[1]);
   }
   else {
-    //Dump out generic view modes matching the generic controller actions.
-    //This can be done straight from the skeletons
+    try {
+      fs.mkdirSync(path.join(current_dir, 'api', 'views', options[0]));
+    }
+    catch (e) {
+      console.error('You asked me to create a view called ' + options[0] +
+        '. There was an error creating the directory. Check if it already exists.');
+      process.exit(5);
+    }
+
+    fs = require('fs-extra');
+    fs.copy(path.join(skeletons, 'view'), path.join(current_dir, 'api', 'views', options[0]));
+    console.log(path.join(current_dir, 'api', 'views', options[0]));
+    console.log('Done');
   }
 }
 
