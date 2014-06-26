@@ -29,6 +29,8 @@ handler.create = function(target, modifiers) {
 
   targets.project = function() {
     var project = {};
+    var pkg = {};
+    var turnpike_pkg = fs.readJsonSync(path.join(moddir, 'package.json'));
 
     if (modifiers.length < 1) {
       console.log("Usage: turnpike create project [Project Name]");
@@ -44,11 +46,18 @@ handler.create = function(target, modifiers) {
     }
 
     console.log('creating project: ' + project.name + ' in ' + project.dir);
-    fs.copy(bindir + '/skeletons/project', project.dir);
+    fs.copySync(bindir + '/skeletons/project', project.dir);
     //TODO: Write out the correct values into package.json so npm install will pull in Turnpike and the new project can actually run.
+    pkg.name = project.dir;
+    pkg.version = '0.0.1';
+    pkg.main = 'app.js';
+    pkg.dependencies = {
+      'turnpike': turnpike_pkg.version
+    };
+    fs.writeJsonSync(path.join(project.dir, 'package.json'), pkg);
     console.log('Your new project, ' + project.name + ', was created in ' +
       path.normalize(project.dir) +
-      ' You may now enter that directory and start your server by running turnpike drive.');
+      ' You may now enter that directory, run npm install, and start your server by running turnpike drive.');
   };
 
   targets.controller = function(attachModel) {
@@ -106,13 +115,30 @@ handler.verify = function(target, modifiers) {
 };
 
 handler.drive = function(target, modifiers) {
-  drive = require('../lib/Drive').drive;
-  drive();
+  var turnpike;
+  try {
+    turnpike = require(path.join(process.cwd(), 'node_modules', 'turnpike'));
+  }
+  catch (e) {
+    console.error('Could not load turnpike from node_modules.' +
+      ' Make sure the current directory is a Turnpike project, and you have run npm install');
+    process.exit(1);
+  }
+  turnpike.drive();
 };
 
 handler.testdrive = function(target, modifiers) {
+  var turnpike;
+  try {
+    turnpike = require(path.join(process.cwd(), 'node_modules', 'turnpike'));
+  }
+  catch (e) {
+    console.error('Could not load turnpike from node_modules.' +
+      ' Make sure the current directory is a Turnpike project, and you have run npm install');
+    process.exit(1);
+  }
   console.log("Starting a test drive on port " + require('../lib/GlobalConfig').port);
-  require('../lib/GlobalConfig').testing = true;
+  turnpike.GlobalConfig.testing = true;
   handler.drive();
 };
 
