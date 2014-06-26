@@ -4,8 +4,8 @@
  * keep this permissive.
  */
 
-function Index() {
-  return true;
+function Index(route, callback) {
+  callback(undefined, true);
 }
 
 module.exports = Index;

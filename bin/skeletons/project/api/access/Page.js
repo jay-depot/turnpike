@@ -4,8 +4,8 @@
  * cases inside specific actions.
  */
 
-function Page() {
-  return true;
+function Page(route, callback) {
+  callback(undefined, true);
 }
 
 module.exports = Page;
