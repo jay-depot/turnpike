@@ -32,7 +32,6 @@ Built on Connect, Hooks and Underscore, Turnpike aims to provide a similar produ
 $ npm install -g turnpike
 $ turnpike create project Turnpike Example
 $ cd turnpike-example
-$ npm init
 $ npm install
 $ turnpike testdrive
 ```
