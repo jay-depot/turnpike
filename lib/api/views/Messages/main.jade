@@ -1,0 +1,8 @@
+each message in messages
+    - if (message.type === 'error') message.type = 'danger';
+    - message.classes = "alert alert-" + message.type + " alert-dismissible"
+    div(role="alert" class=message.classes)
+        button(type="button" class="close" data-dismiss="alert")
+            span(aria-hidden="true") &times;
+            span.sr-only Close
+        span #{message.text}
