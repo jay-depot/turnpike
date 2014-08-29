@@ -25,36 +25,43 @@ _.mixin(_.str.exports());
 _.str.include('Underscore.string', 'string'); // => true
 
 //Porcelain interfaces:
-turnpike.EndpointController = require('./lib/EndpointController');
-turnpike.MemoryModel        = require('./lib/MemoryModel');
-turnpike.KnexModel          = require('./lib/KnexModel');
-turnpike.routes             = require('./lib/Router').routes;
-turnpike.drive              = require('./lib/Drive').drive;
-turnpike.Driver             = require('./lib/Drive').Driver;
-turnpike.invoke             = require('./lib/AutoLoader').invoke;
-turnpike.invokeModel        = require('./lib/AutoLoader').invokeModel;
-turnpike.invokeView         = require('./lib/AutoLoader').invokeView;
-turnpike.invokeController   = require('./lib/AutoLoader').invokeController;
-turnpike.GlobalConfig       = require('./lib/GlobalConfig');
-turnpike.ViewBase           = require('./lib/ViewBase');
-turnpike.setSessionStorage  = require('./lib/Session').setSessionStorage;
-turnpike.useCsrf            = require('./lib/Session').useCsrf;
-turnpike.fieldMap            = require('./lib/fieldMap.js');
+turnpike.EndpointController = require('./lib/classes/base/controller/EndpointController');
+turnpike.MemoryModel        = require('./lib/classes/base/collection/MemoryModel');
+turnpike.KnexModel          = require('./lib/classes/base/collection/KnexModel');
+turnpike.routes             = require('./lib/server/Router').routes;
+turnpike.drive              = require('./lib/server/Drive').drive;
+turnpike.Driver             = require('./lib/server/Drive').Driver;
+turnpike.invoke             = require('./lib/internal/AutoLoader').invoke;
+turnpike.invokeModel        = require('./lib/internal/AutoLoader').invokeModel;
+turnpike.invokeView         = require('./lib/internal/AutoLoader').invokeView;
+turnpike.invokeController   = require('./lib/internal/AutoLoader').invokeController;
+turnpike.ViewBase           = require('./lib/classes/base/view/ViewBase');
+turnpike.setSessionStorage  = require('./lib/server/middleware/SessionWrapper').setSessionStorage;
+turnpike.useCsrf            = require('./lib/server/middleware/SessionWrapper').useCsrf;
+turnpike.fieldMap           = require('./lib/classes/base/controller/fieldMap.js');
 
 //Plumbing interfaces:
-turnpike.AutoLoader         = require('./lib/AutoLoader'); //Probes your project for its components. Supports an override heirarchy.
-turnpike.ModelPool          = require('./lib/ModelPool'); //AutoLoader uses this to find model instances
-turnpike.Connection         = require('./lib/Connection'); //Your controllers get instances of this
-turnpike.ActionParser       = require('./lib/ActionParser'); //Turnpike server uses this to choose contoller actions from your routes.json file
-turnpike.AccessControl      = require('./lib/AccessControl'); //Used by Turnpike Server to parse access rules
-turnpike.Router             = require('./lib/Router'); //It's a router. 'nuff said.
-turnpike.ViewBuilder        = require('./lib/ViewBuilder'); //Constructs View classes from a folder full of Jade templates
-turnpike.server             = require('./lib/turnpike_server'); //The meat of what we pass to Connect for handling incoming requests.
-turnpike.Session            = require('./lib/Session');
+turnpike.ModelPool          = require('./lib/internal/ModelPool'); //AutoLoader uses this to find model instances
+turnpike.Connection         = require('./lib/classes/Connection'); //Your controllers get instances of this
+turnpike.ActionParser       = require('./lib/server/ActionParser'); //Turnpike server uses this to choose contoller actions from your routes.json file
+turnpike.AccessControl      = require('./lib/server/AccessControl'); //Used by Turnpike Server to parse access rules
+turnpike.Router             = require('./lib/server/Router'); //It's a router. 'nuff said.
+turnpike.ViewBuilder        = require('./lib/classes/base/view/ViewBuilder'); //Constructs View classes from a folder full of Jade templates
+turnpike.server             = require('./lib/server/turnpike_server'); //The meat of what we pass to Connect for handling incoming requests.
+turnpike.Session            = require('./lib/server/middleware/SessionWrapper');
 
 //nice to have:
 turnpike._                  = _;
 turnpike.connect            = require('connect'); //returns the exact version of connect framework Turnpike is using.
                                                   //VERY helpful when settng up session storage in your app.
+
+// The big redo:
+turnpike.application = require('./lib/application');
+turnpike.classes     = require('./lib/classes');
+turnpike.internal    = require('./lib/internal');
+turnpike.server      = require('./lib/server');
+turnpike.util        = require('./lib/util');
+turnpike.config      = require('./lib/config');
+
 
 module.exports = turnpike;

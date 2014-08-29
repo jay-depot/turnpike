@@ -24,7 +24,7 @@ handler.create = function(target, modifiers) {
       'name': name
     });
 
-    fs.writeFileSync(path.join('api', 'access', name + '.js'), output);
+    fs.writeFileSync(path.join('application', 'access', name + '.js'), output);
   }
 
   targets.project = function() {
@@ -73,7 +73,7 @@ handler.create = function(target, modifiers) {
       'attachModel': attachModel
     });
 
-    fs.writeFileSync(path.join('api', 'controllers', name + '.js'), output);
+    fs.writeFileSync(path.join('application', 'controllers', name + '.js'), output);
   };
 
   targets.model = function() {};
@@ -137,8 +137,8 @@ handler.testdrive = function(target, modifiers) {
       ' Make sure the current directory is a Turnpike project, and you have run npm install');
     process.exit(1);
   }
-  console.log("Starting a test drive on port " + require('../lib/GlobalConfig').port);
-  turnpike.GlobalConfig.testing = true;
+  console.log("Starting a test drive on port " + require('../lib/config').port);
+  turnpike.config.testing = true;
   handler.drive();
 };
 

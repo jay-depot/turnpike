@@ -2,7 +2,7 @@
  * Tests the EndpointController class.
  */
 
-var EndpointController = require('../lib/EndpointController');
+var EndpointController = require('../lib/classes/base/controller/EndpointController');
 var util = require('util');
 
 function MockModel() {

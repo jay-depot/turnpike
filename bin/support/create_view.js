@@ -18,19 +18,19 @@ function generate_all_templates_in(BaseModel, BaseController, name) {
   var current_dir = process.cwd();
 
   //create
-  fs.writeFileSync(path.join(current_dir, 'api', 'views', name, 'create.jade'), display_code.join('\n'));
+  fs.writeFileSync(path.join(current_dir, 'application', 'views', name, 'create.jade'), display_code.join('\n'));
   //edit_form
-  fs.writeFileSync(path.join(current_dir, 'api', 'views', name, 'edit_form.jade'), form_code.join('\n'));
+  fs.writeFileSync(path.join(current_dir, 'application', 'views', name, 'edit_form.jade'), form_code.join('\n'));
   //edit
-  fs.writeFileSync(path.join(current_dir, 'api', 'views', name, 'edit.jade'), display_code.join('\n'));
+  fs.writeFileSync(path.join(current_dir, 'application', 'views', name, 'edit.jade'), display_code.join('\n'));
   //index
-  fs.writeFileSync(path.join(current_dir, 'api', 'views', name, 'index.jade'), generate_index(item, fieldMapper, name));
+  fs.writeFileSync(path.join(current_dir, 'application', 'views', name, 'index.jade'), generate_index(item, fieldMapper, name));
   //main
-  fs.writeFileSync(path.join(current_dir, 'api', 'views', name, 'main.jade'), display_code.join('\n'));
+  fs.writeFileSync(path.join(current_dir, 'application', 'views', name, 'main.jade'), display_code.join('\n'));
   //remove_form
-  fs.writeFileSync(path.join(current_dir, 'api', 'views', name, 'remove_form.jade'), generate_delete_confirm(display_code));
+  fs.writeFileSync(path.join(current_dir, 'application', 'views', name, 'remove_form.jade'), generate_delete_confirm(display_code));
   //remove
-  fs.writeFileSync(path.join(current_dir, 'api', 'views', name, 'remove.jade'), '.confirmation The item was deleted.');
+  fs.writeFileSync(path.join(current_dir, 'application', 'views', name, 'remove.jade'), '.confirmation The item was deleted.');
 
   console.log('Done');
   process.exit(0);
@@ -125,7 +125,7 @@ function create_view(options, skeletons) {
   if (options[0].toLowerCase() === "for") {
     //find model, load it, and instantiate an Item() from it.
     try {
-      Model = require(path.join(current_dir, 'api', 'models', options[1]));
+      Model = require(path.join(current_dir, 'application', 'models', options[1]));
     }
     catch (e) {
       console.error('You asked me to create a view for ' + options[1] +
@@ -134,7 +134,7 @@ function create_view(options, skeletons) {
     }
 
     try {
-      Controller = require(path.join(current_dir, 'api', 'controllers', options[1]));
+      Controller = require(path.join(current_dir, 'application', 'controllers', options[1]));
     }
     catch (e) {
       console.error('You asked me to create a view for ' + options[1] +
@@ -143,7 +143,7 @@ function create_view(options, skeletons) {
     }
 
     try {
-      fs.mkdirSync(path.join(current_dir, 'api', 'views', options[1]));
+      fs.mkdirSync(path.join(current_dir, 'application', 'views', options[1]));
     }
     catch (e) {
       console.error('You asked me to create a view for ' + options[1] +
@@ -155,7 +155,7 @@ function create_view(options, skeletons) {
   }
   else {
     try {
-      fs.mkdirSync(path.join(current_dir, 'api', 'views', options[0]));
+      fs.mkdirSync(path.join(current_dir, 'application', 'views', options[0]));
     }
     catch (e) {
       console.error('You asked me to create a view called ' + options[0] +
@@ -164,8 +164,8 @@ function create_view(options, skeletons) {
     }
 
     fs = require('fs-extra');
-    fs.copy(path.join(skeletons, 'view'), path.join(current_dir, 'api', 'views', options[0]));
-    console.log(path.join(current_dir, 'api', 'views', options[0]));
+    fs.copy(path.join(skeletons, 'view'), path.join(current_dir, 'application', 'views', options[0]));
+    console.log(path.join(current_dir, 'application', 'views', options[0]));
     console.log('Done');
   }
 }
