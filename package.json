@@ -1,7 +1,7 @@
 {
   "name": "turnpike",
   "description": "A lightweight HMVC framework with flexible opinions.",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "homepage": "https://github.com/jay-depot/turnpike",
   "repository": "https://github.com/jay-depot/turnpike.git",
   "author": "Jason DePeaux <unleet.42@gmail.com> (http://github.com/jay-depot)",
