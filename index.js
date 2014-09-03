@@ -16,14 +16,18 @@
  * existing plumbing interfaces with few to no changes without a bump in the major version number.
  */
 
-var turnpike = {},
-    _        = require('underscore');
+var turnpike = {};
 
-//Setup Underscore.js with Underscore String.
-_.str = require('underscore.string');
-_.mixin(_.str.exports());
-_.str.include('Underscore.string', 'string'); // => true
+// The big redo:
+turnpike.application = require('./lib/application');
+turnpike.classes     = require('./lib/classes');
+turnpike.imports     = require('./lib/imports');
+turnpike.internal    = require('./lib/internal');
+turnpike.server      = require('./lib/server');
+turnpike.util        = require('./lib/util');
+turnpike.config      = require('./lib/config');
 
+//Legacy interfaces:
 //Porcelain interfaces:
 turnpike.EndpointController = require('./lib/classes/base/controller/EndpointController');
 turnpike.MemoryModel        = require('./lib/classes/base/collection/MemoryModel');
@@ -51,17 +55,8 @@ turnpike.server             = require('./lib/server/turnpike_server'); //The mea
 turnpike.Session            = require('./lib/server/middleware/SessionWrapper');
 
 //nice to have:
-turnpike._                  = _;
-turnpike.connect            = require('connect'); //returns the exact version of connect framework Turnpike is using.
-                                                  //VERY helpful when settng up session storage in your app.
-
-// The big redo:
-turnpike.application = require('./lib/application');
-turnpike.classes     = require('./lib/classes');
-turnpike.internal    = require('./lib/internal');
-turnpike.server      = require('./lib/server');
-turnpike.util        = require('./lib/util');
-turnpike.config      = require('./lib/config');
-
+turnpike._                  = turnpike.imports.underscore;
+turnpike.connect            = turnpike.imports.connect; //returns the exact version of connect framework Turnpike is using.
+                                                        //VERY helpful when setting up session storage in your app.
 
 module.exports = turnpike;
