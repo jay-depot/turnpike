@@ -6,7 +6,7 @@ var util     = require('util');
 var _        = turnpike._;
 
 function Page(connection) {
-  $this = this;
+  var $this = this;
   turnpike.EndpointController.call(this, connection);
 
   //TODO: Should we send error if we get here and the content type isn't HTML?
