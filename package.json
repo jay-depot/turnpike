@@ -34,6 +34,7 @@
     "underscore.string": "~2.3.3"
   },
   "devDependencies": {
-    "test": "~0.6.0"
+    "test": "~0.6.0",
+    "shelljs": "^0.3.0"
   }
 }
