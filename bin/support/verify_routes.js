@@ -1,6 +1,6 @@
 var AutoLoader = require('../../lib/internal/AutoLoader'),
     ActionParser = require('../../lib/server/ActionParser'),
-    driver = require('../../lib/server/Drive').Driver,
+    driver = require('../../lib/server/drive').Driver,
     fs      = require('fs-extra');
 
 

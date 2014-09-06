@@ -31,8 +31,8 @@ turnpike.config      = require('./lib/config');
 //Porcelain interfaces:
 turnpike.EndpointController = require('./lib/classes/base/controller/EndpointController');
 turnpike.routes             = require('./lib/server/Router').routes;
-turnpike.drive              = require('./lib/server/Drive').drive;
-turnpike.Driver             = require('./lib/server/Drive').Driver;
+turnpike.drive              = require('./lib/server/drive').drive;
+turnpike.Driver             = require('./lib/server/drive').Driver;
 turnpike.invoke             = require('./lib/internal/AutoLoader').invoke;
 turnpike.invokeModel        = require('./lib/internal/AutoLoader').invokeModel;
 turnpike.invokeView         = require('./lib/internal/AutoLoader').invokeView;
