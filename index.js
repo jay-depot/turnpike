@@ -30,8 +30,6 @@ turnpike.config      = require('./lib/config');
 //Legacy interfaces:
 //Porcelain interfaces:
 turnpike.EndpointController = require('./lib/classes/base/controller/EndpointController');
-turnpike.MemoryModel        = require('./lib/classes/base/collection/MemoryModel');
-turnpike.KnexModel          = require('./lib/classes/base/collection/KnexModel');
 turnpike.routes             = require('./lib/server/Router').routes;
 turnpike.drive              = require('./lib/server/Drive').drive;
 turnpike.Driver             = require('./lib/server/Drive').Driver;
