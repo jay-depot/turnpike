@@ -2,7 +2,7 @@
  * Tests the EndpointController class.
  */
 
-var EndpointController = require('../lib/classes/base/controller/EndpointController');
+var WebEndpointController = require('../lib/classes/base/controller/WebEndpointController');
 var util = require('util');
 
 function MockModel() {
@@ -48,8 +48,8 @@ function MockModel() {
 }
 
 function TestController(connection) {
-  EndpointController.call(this, connection);
-} util.inherits(TestController, EndpointController);
+  WebEndpointController.call(this, connection);
+} util.inherits(TestController, WebEndpointController);
 
 
 exports['test default create with no model defined'] = function(assert, done) {
