@@ -1,4 +1,4 @@
-var AutoLoader = require('../../lib/internal/AutoLoader'),
+var AutoLoader = require('../../lib/internal/autoLoader'),
     ActionParser = require('../../lib/server/ActionParser'),
     driver = require('../../lib/server/drive').Driver,
     fs      = require('fs-extra');
@@ -16,7 +16,7 @@ function verify_action(path, target) {
 
   action = ActionParser.parse(target);
   if (typeof(action) === 'object') {
-    controller = AutoLoader.invoke(action.classname);
+    controller = autoLoader.invoke(action.classname);
 
     if (action.instance) {
       controller = new controller();
@@ -28,7 +28,7 @@ function verify_action(path, target) {
     }
   }
   else if (typeof(target) === 'string') {
-      if(typeof(AutoLoader.invoke(target)) !== 'function') {
+      if(typeof(autoLoader.invoke(target)) !== 'function') {
       console.error('Bare controllers as route actions need to exist. '
         + target + ' does not appear to.');
       process.exit(1);
