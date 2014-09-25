@@ -16,16 +16,8 @@
  * existing plumbing interfaces with few to no changes without a bump in the major version number.
  */
 
-var turnpike = {};
-
 // The big redo:
-turnpike.application = require('./lib/application');
-turnpike.classes     = require('./lib/classes');
-turnpike.imports     = require('./lib/imports');
-turnpike.internal    = require('./lib/internal');
-turnpike.server      = require('./lib/server');
-turnpike.util        = require('./lib/util');
-turnpike.config      = require('./lib/config');
+var turnpike = require('./lib');
 
 //Legacy interfaces:
 //Porcelain interfaces:
@@ -33,17 +25,13 @@ turnpike.EndpointController = require('./lib/classes/base/controller/EndpointCon
 turnpike.routes             = require('./lib/server/Router').routes;
 turnpike.drive              = require('./lib/server/drive').drive;
 turnpike.Driver             = require('./lib/server/drive').Driver;
-turnpike.invoke             = require('./lib/internal/AutoLoader').invoke;
-turnpike.invokeModel        = require('./lib/internal/AutoLoader').invokeModel;
-turnpike.invokeView         = require('./lib/internal/AutoLoader').invokeView;
-turnpike.invokeController   = require('./lib/internal/AutoLoader').invokeController;
 turnpike.ViewBase           = require('./lib/classes/base/view/ViewBase');
 turnpike.setSessionStorage  = require('./lib/server/middleware/SessionWrapper').setSessionStorage;
 turnpike.useCsrf            = require('./lib/server/middleware/SessionWrapper').useCsrf;
 turnpike.fieldMap           = require('./lib/classes/base/controller/fieldMap.js');
 
 //Plumbing interfaces:
-turnpike.ModelPool          = require('./lib/internal/ModelPool'); //AutoLoader uses this to find model instances
+turnpike.ModelPool          = require('./lib/internal/ModelPool'); //autoLoader uses this to find model instances
 turnpike.Connection         = require('./lib/classes/Connection'); //Your controllers get instances of this
 turnpike.ActionParser       = require('./lib/server/ActionParser'); //Turnpike server uses this to choose contoller actions from your routes.json file
 turnpike.AccessControl      = require('./lib/server/AccessControl'); //Used by Turnpike Server to parse access rules
