@@ -12,7 +12,7 @@
  * alter the plumbing interfaces at any time, even between minor versions and revisions.
  *
  * Other elements of the framework are documented as "porcelain". These are the entry points to the framework we
- * expect any app relying on Turnpike to use. In general, after the 0.1.0 release, we will aim to maintain the
+ * expect any app relying on Turnpike to use. In general, after the 1.0.0 release, we will aim to maintain the
  * existing plumbing interfaces with few to no changes without a bump in the major version number.
  */
 
