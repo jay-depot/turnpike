@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "async": "^0.9.0",
+    "cmdln": "^2.1.1",
     "connect": "~2.19.x",
     "fs-extra": "~0.9.1",
     "hooks": "~0.3.2",
