@@ -12,12 +12,12 @@ for (var i in files) {
   if (files.hasOwnProperty(i)) {
     pattern.lastIndex = 0;
     if (pattern.test(files[i])) {
-      exports[files[i]] = function(file, assert) {
+      exports[files[i]] = function(file, assert, done) {
         file = './test/integration/' + file;
         console.log(file);
         shell.exec('node ' + file, function(code, output) {
-          console.log(output);
           assert.equal(code, 0, "Integration run must exit with 0 status");
+          done();
         });
       }.bind(this, files[i])
     }
