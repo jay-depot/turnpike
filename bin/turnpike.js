@@ -40,7 +40,7 @@ Turnpike.prototype.do_drive = function(subcmd, opts, args, cb) {
       ' Make sure the current directory is a Turnpike project, and you have run npm install');
     process.exit(1);
   }
-  turnpike.drive();
+  turnpike.server.drive();
 };
 
 Turnpike.prototype.do_drive.help = (

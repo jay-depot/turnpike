@@ -7,7 +7,7 @@
 var turnpike = require('turnpike');
 
 // This hook lets you attach your own middleware to Turnpike's Connect object.
-turnpike.Driver.pre('startServer', function(next, app, cb){
+turnpike.server.drive.driver.pre('startServer', function(next, app, cb){
 
 
   next(app, cb);

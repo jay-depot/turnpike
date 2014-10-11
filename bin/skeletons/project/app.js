@@ -12,4 +12,4 @@
 var turnpike = require('turnpike');
 
 // Start the server
-turnpike.drive();
+turnpike.server.drive();
