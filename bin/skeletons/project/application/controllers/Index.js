@@ -3,12 +3,12 @@
  */
 var turnpike = require('turnpike');
 var util     = require('util');
-var _        = turnpike._;
+var _        = turnpike.imports.underscore;
 
 function Index(connection) {
-  turnpike.EndpointController.call(this, connection);
+  turnpike.classes.base.controller.EndpointController.call(this, connection);
 }
-util.inherits(Index, turnpike.EndpointController);
+util.inherits(Index, turnpike.classes.base.controller.EndpointController);
 
 Index.prototype._GET = function(readyCallback) {
   var view = turnpike.invokeView('Index');

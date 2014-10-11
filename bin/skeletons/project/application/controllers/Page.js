@@ -7,7 +7,7 @@ var _        = turnpike._;
 
 function Page(connection) {
   var $this = this;
-  turnpike.EndpointController.call(this, connection);
+  turnpike.classes.base.controller.EndpointController.call(this, connection);
 
   //TODO: Should we send error if we get here and the content type isn't HTML?
   this.deliver = function() {
@@ -19,7 +19,7 @@ function Page(connection) {
       });
   };
 }
-util.inherits(Page, turnpike.EndpointController);
+util.inherits(Page, turnpike.classes.base.controller.EndpointController);
 
 
 Page.prototype._GET =
