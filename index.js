@@ -19,30 +19,4 @@
 // The big redo:
 var turnpike = require('./lib');
 
-//Legacy interfaces:
-//Porcelain interfaces:
-turnpike.EndpointController = require('./lib/classes/base/controller/EndpointController');
-turnpike.routes             = require('./lib/server/Router').routes;
-turnpike.drive              = require('./lib/server/drive').drive;
-turnpike.Driver             = require('./lib/server/drive').Driver;
-turnpike.ViewBase           = require('./lib/classes/base/view/ViewBase');
-turnpike.setSessionStorage  = require('./lib/server/middleware/SessionWrapper').setSessionStorage;
-turnpike.useCsrf            = require('./lib/server/middleware/SessionWrapper').useCsrf;
-turnpike.fieldMap           = require('./lib/classes/base/controller/fieldMap.js');
-
-//Plumbing interfaces:
-turnpike.ModelPool          = require('./lib/internal/ModelPool'); //autoLoader uses this to find model instances
-turnpike.Connection         = require('./lib/classes/Connection'); //Your controllers get instances of this
-turnpike.ActionParser       = require('./lib/server/ActionParser'); //Turnpike server uses this to choose contoller actions from your routes.json file
-turnpike.AccessControl      = require('./lib/server/AccessControl'); //Used by Turnpike Server to parse access rules
-turnpike.Router             = require('./lib/server/Router'); //It's a router. 'nuff said.
-turnpike.ViewBuilder        = require('./lib/classes/base/view/ViewBuilder'); //Constructs View classes from a folder full of Jade templates
-turnpike.server             = require('./lib/server/turnpike_server'); //The meat of what we pass to Connect for handling incoming requests.
-turnpike.Session            = require('./lib/server/middleware/SessionWrapper');
-
-//nice to have:
-turnpike._                  = turnpike.imports.underscore;
-turnpike.connect            = turnpike.imports.connect; //returns the exact version of connect framework Turnpike is using.
-                                                        //VERY helpful when setting up session storage in your app.
-
 module.exports = turnpike;
