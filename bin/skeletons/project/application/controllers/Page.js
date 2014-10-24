@@ -3,7 +3,7 @@
  */
 var turnpike = require('turnpike');
 var util     = require('util');
-var _        = turnpike._;
+var _        = turnpike.imports.underscore;
 
 function Page(connection) {
   var $this = this;
