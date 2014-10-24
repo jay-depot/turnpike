@@ -11,8 +11,7 @@ function Index(connection) {
 util.inherits(Index, turnpike.classes.base.controller.EndpointController);
 
 Index.prototype._GET = function(readyCallback) {
-  var view = turnpike.invokeView('Index');
-  view = new view();
+  var view = new turnpike.application.views.Index();
   view.mode('main').render(_(function(html) {
     this.connection.status(200).response(html);
     readyCallback();

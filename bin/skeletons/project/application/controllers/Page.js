@@ -11,8 +11,7 @@ function Page(connection) {
 
   //TODO: Should we send error if we get here and the content type isn't HTML?
   this.deliver = function() {
-    var view = turnpike.invokeView('Page');
-    view = new view();
+    var view = new turnpike.application.views.Page();
     view.mode('main').data($this.data)
       .render(function(html) {
         connection.response(html).send();
