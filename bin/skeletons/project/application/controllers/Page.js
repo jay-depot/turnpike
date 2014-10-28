@@ -27,7 +27,7 @@ Page.prototype._POST =
 Page.prototype._DELETE = function(readyCallback) {
   this.data = {
     'body':  this.connection.response(),
-    'title': this.connection.controller.title
+    'title': this.connection.controller.title + ' | ' + turnpike.config.sitename
   };
 
   process.nextTick(readyCallback);
