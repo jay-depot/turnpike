@@ -2,7 +2,7 @@
  * Test the Router class.
  */
 
-var Router = require('../lib/Router');
+var Router = require('../lib/server/Router');
 
 exports['test create new router from object'] = function(assert) {
   Router.routes({'/test':'Test'});
