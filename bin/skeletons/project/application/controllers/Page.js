@@ -13,7 +13,6 @@ var _        = turnpike.imports.underscore;
  */
 function Page(connection) {
   turnpike.classes.base.controller.PageComposerController.call(this, connection);
-  this.view = turnpike.application.views.Page;
 
   this.prepare = function(next) {
     this.mode = 'main';
