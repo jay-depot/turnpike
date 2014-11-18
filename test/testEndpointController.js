@@ -143,7 +143,7 @@ exports['test default edit endpoint with no model defined'] = function(assert, d
     }
   });
 
-  controller.edit(function() {
+  controller.edit(1, function() {
     assert.ok(false, "readyCallback should not fire on error condition");
     done();
   });
@@ -176,7 +176,7 @@ exports['test default edit endpoint with nonexistant item'] = function(assert, d
 
   controller.model = model;
 
-  controller.edit(function() {
+  controller.edit(1, function() {
     assert.ok(false, "readyCallback should not fire on error condition");
     done();
   });
@@ -209,7 +209,7 @@ exports['test default edit endpoint with error during load'] = function(assert, 
 
   controller.model = model;
 
-  controller.edit(function() {
+  controller.edit(1, function() {
     assert.ok(false, "readyCallback should not fire on error condition");
     done();
   });
@@ -242,7 +242,7 @@ exports['test default edit endpoint with error during save'] = function(assert, 
 
   controller.model = model;
 
-  controller.edit(function() {
+  controller.edit(1, function() {
     assert.ok(false, "readyCallback should not fire on error condition");
     done();
   });
@@ -273,7 +273,7 @@ exports['test default edit endpoint success'] = function(assert, done) {
 
   controller.model = model;
 
-  controller.edit(function() {
+  controller.edit(1, function() {
     assert.equal(controller.data.name, 'test', 'data to be sent to view should match created item');
     done();
   });
@@ -293,7 +293,7 @@ exports['test default index endpoint with no model defined'] = function(assert, 
     }
   });
 
-  controller.edit(function() {
+  controller.edit(1, function() {
     assert.ok(false, "readyCallback should not fire on error condition");
     done();
   });
@@ -382,7 +382,7 @@ exports['test default main endpoint with no model defined'] = function(assert, d
     }
   });
 
-  controller.main(function() {
+  controller.main(1, function() {
     assert.ok(false, "readyCallback should not fire on error condition");
     done();
   });
@@ -413,7 +413,7 @@ exports['test default main endpoint with nonexistant item'] = function(assert, d
   };
 
   controller.model = model;
-  controller.main(function() {
+  controller.main(1, function() {
     assert.ok(false, "readyCallback should not fire on error condition");
     done();
   });
@@ -444,7 +444,7 @@ exports['test default main endpoint with error on retrieval'] = function(assert,
   };
 
   controller.model = model;
-  controller.main(function() {
+  controller.main(1, function() {
     assert.ok(false, "readyCallback should not fire on error condition");
     done();
   });
@@ -477,7 +477,7 @@ exports['test default main endpoint success'] = function(assert, done) {
 
   controller.model = model;
 
-  controller.main(function() {
+  controller.main(1, function() {
     assert.equal(controller.data.name, 'test', 'returned item should match item send back by model');
     done();
   });
@@ -502,7 +502,7 @@ exports['test default remove endpoint with no model defined'] = function(assert,
     }
   });
 
-  controller.remove(function() {
+  controller.remove(1, function() {
     assert.ok(false, "readyCallback should not fire on error condition");
     done();
   });
@@ -533,7 +533,7 @@ exports['test default remove endpoint with nonexistant item'] = function(assert,
   };
 
   controller.model = model;
-  controller.remove(function() {
+  controller.remove(1, function() {
     assert.ok(false, "readyCallback should not fire on error condition");
     done();
   });
@@ -564,7 +564,7 @@ exports['test default remove endpoint with error on removal'] = function(assert,
   };
 
   controller.model = model;
-  controller.remove(function() {
+  controller.remove(1, function() {
     assert.ok(false, "readyCallback should not fire on error condition");
     done();
   });
@@ -595,7 +595,7 @@ exports['test default remove endpoint success'] = function(assert, done) {
   };
 
   controller.model = model;
-  controller.remove(function() {
+  controller.remove(1, function() {
     assert.equal(controller.data.removed[0], 1, 'list of removed items should contain item id from request');
     assert.equal(controller.data.removed.length, 1, 'list of removed items should contain exactly 1 item');
     done();
@@ -620,7 +620,7 @@ exports['test default removeForm endpoint with no model defined'] = function(ass
     }
   });
 
-  controller.removeForm(function() {
+  controller.removeForm(1, function() {
     assert.ok(false, "readyCallback should not fire on error condition");
     done();
   });
@@ -651,7 +651,7 @@ exports['test default removeForm endpoint with error on retrieval'] = function(a
   };
 
   controller.model = model;
-  controller.removeForm(function() {
+  controller.removeForm(1, function() {
     assert.ok(false, "readyCallback should not fire on error condition");
     done();
   });
@@ -682,7 +682,7 @@ exports['test default removeForm endpoint with nonexistant item'] = function(ass
   };
 
   controller.model = model;
-  controller.removeForm(function() {
+  controller.removeForm(1, function() {
     assert.ok(false, "readyCallback should not fire on error condition");
     done();
   });
@@ -715,7 +715,7 @@ exports['test default removeForm endpoint with existing item'] = function(assert
 
   controller.model = model;
 
-  controller.removeForm(function() {
+  controller.removeForm(1, function() {
     assert.equal(controller.data.name, 'test', 'returned item should match item send back by model');
     done();
   });
@@ -740,7 +740,7 @@ exports['test default editForm endpoint with no model defined'] = function(asser
     }
   });
 
-  controller.editForm(function() {
+  controller.editForm(1, function() {
     assert.ok(false, "readyCallback should not fire on error condition");
     done();
   });
@@ -771,7 +771,7 @@ exports['test default editForm endpoint with error on retrieval'] = function(ass
   };
 
   controller.model = model;
-  controller.editForm(function() {
+  controller.editForm(1, function() {
     assert.ok(false, "readyCallback should not fire on error condition");
     done();
   });
@@ -802,7 +802,7 @@ exports['test default editForm endpoint with nonexistant item'] = function(asser
   };
 
   controller.model = model;
-  controller.editForm(function() {
+  controller.editForm(1, function() {
     assert.ok(false, "readyCallback should not fire on error condition");
     done();
   });
@@ -861,7 +861,7 @@ exports['test default editForm endpoint with existing item'] = function(assert, 
 
   controller.model = model;
 
-  controller.editForm(function() {
+  controller.editForm(1, function() {
     assert.equal(controller.data.name, 'test', 'returned item should match item send back by model');
     done();
   });
