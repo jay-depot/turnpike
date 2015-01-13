@@ -828,7 +828,7 @@ exports['test default editForm endpoint with no item requested'] = function(asse
 
   controller.model = model;
 
-  controller.editForm(function() {
+  controller.editForm(false, function() {
     assert.deepEqual(controller.data, { _id: undefined, name: undefined }, "controller data should match empty model item");
     done();
   });
