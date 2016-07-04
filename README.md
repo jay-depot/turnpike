@@ -1,6 +1,7 @@
 # turnpike
 [![Build Status](https://travis-ci.org/jay-depot/turnpike.png?branch=master)](https://travis-ci.org/jay-depot/turnpike)
 [![Code Climate](https://codeclimate.com/github/jay-depot/turnpike.png)](https://codeclimate.com/github/jay-depot/turnpike)
+[![Test Coverage](https://codeclimate.com/github/jay-depot/turnpike/badges/coverage.svg)](https://codeclimate.com/github/jay-depot/turnpike/coverage)
 
 A stylistically permissive, flexible HMVC framework for Node.js
 
