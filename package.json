@@ -6,7 +6,7 @@
   "repository": "https://github.com/jay-depot/turnpike.git",
   "author": "Jason DePeaux <unleet.42@gmail.com> (http://github.com/jay-depot)",
   "main": "index",
-  "licence": "MIT",
+  "license": "MIT",
   "directories": {
     "bin": "./bin",
     "lib": "./lib",
