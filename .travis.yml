@@ -1,6 +1,15 @@
 language: node_js
+
 node_js:
-   - "0.11"
-   - "6.1.x"
+  - "0.11"
+  - "6.1.x"
+
 before_script:
-   - npm link
+  - npm link
+
+addons:
+  code_climate:
+    repo_token: ccfbd3752b347fc937272cc69dabbdd88074847c0b03f54464027a7a8108e1d1
+
+after_script:
+  - codeclimate-test-reporter < ./coverage/lcov.info
