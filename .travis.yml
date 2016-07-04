@@ -8,6 +8,7 @@ node_js:
 
 before_script:
   - npm link
+  - npm install -g codeclimate-test-reporter
 
 addons:
   code_climate:
