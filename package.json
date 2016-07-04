@@ -6,6 +6,7 @@
   "repository": "https://github.com/jay-depot/turnpike.git",
   "author": "Jason DePeaux <unleet.42@gmail.com> (http://github.com/jay-depot)",
   "main": "index",
+  "licence": "MIT",
   "directories": {
     "bin": "./bin",
     "lib": "./lib",
@@ -23,24 +24,23 @@
   "dependencies": {
     "async": "^0.9.0",
     "body-parser": "^1.9.0",
-    "cmdln": "^2.1.1",
+    "cmdln": "^4.1.1",
     "cookie-parser": "^1.3.3",
     "csurf": "^1.6.1",
     "express": "^4.9.7",
     "express-session": "^1.8.2",
-    "fs-extra": "~0.9.1",
+    "fs-extra": "~0.30.0",
     "hooks": "~0.3.2",
-    "jade": "~1.3.1",
-    "lodash": "^2.4.1",
+    "jade": "~1.11.0",
+    "lodash": "^4.13.1",
     "morgan": "^1.3.2",
-    "multiparty": "~3.2.8",
-    "negotiator": "~0.4.2",
-    "routes": "~1.1.0",
-    "underscore": "~1.6.0",
-    "underscore.string": "~2.3.3"
+    "multiparty": "~4.1.2",
+    "negotiator": "~0.6.1",
+    "underscore": "~1.8.3",
+    "underscore.string": "~3.3.4"
   },
   "devDependencies": {
     "test": "~0.6.0",
-    "shelljs": "^0.3.0"
+    "shelljs": "^0.7.0"
   }
 }
