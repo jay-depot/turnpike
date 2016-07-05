@@ -5,7 +5,8 @@
  */
 
 var shell = require('shelljs');
-var status;
+var rest  = require('restler');
+var status, server;
 
 console.log('Creating a project skeleton in', shell.tempdir());
 shell.cd(shell.tempdir());
@@ -36,5 +37,24 @@ server.on('exit', function(code, signal) {
 
 //TODO: Instead of just seeing if there are any errors firing up the server. Connect to it, and check response
 setTimeout(function(server) {
-  server.kill('SIGHUP');
-}.bind(this, server), 10000); //For now, we can assume it's working after 10 seconds without an error.
+  rest.get('http://localhost:1337/', {
+    headers: { Accept: 'text/html' }
+  }).on('complete', function(data, res) {
+    if (data instanceof Error) {
+      server.kill('SIGHUP');
+      console.log(data);
+      throw data;
+    }
+    else {
+      server.kill('SIGHUP');
+      if (res.statusCode === 200) {
+        console.log('Project skeleton server returns 200 status at /');
+        process.exit(0);
+      }
+      else {
+        console.log('Project skeleton server does not return 200 status at /');
+        process.exit(res.statusCode);
+      }
+    }
+  });
+}.bind(this, server), 10000);

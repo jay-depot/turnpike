@@ -42,6 +42,7 @@
   "devDependencies": {
     "istanbul": "^0.4.4",
     "shelljs": "^0.7.0",
-    "test": "~0.6.0"
+    "test": "~0.6.0",
+    "restler": "~3.2.2"
   }
 }
