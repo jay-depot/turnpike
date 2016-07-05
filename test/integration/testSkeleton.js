@@ -22,6 +22,7 @@ if (status.code) {
 
 shell.cd('turnpike-test');
 shell.exec('npm link turnpike');
+shell.exec('npm install');
 var server = require('child_process').spawn('./node_modules/.bin/turnpike',
   ['testdrive'], {});
 
