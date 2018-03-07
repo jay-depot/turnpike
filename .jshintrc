@@ -1,0 +1,10 @@
+{
+
+  "browser": false,
+  "esnext": true,
+  "node": true,
+  "globals": {},
+  "strict": "global",
+  "undef": true,
+  "unused": true
+}

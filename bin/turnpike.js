@@ -115,12 +115,15 @@ TurnpikeCreate.prototype.do_project = function(subcmd, opts, name, cb) {
 
   console.log('creating project: ' + project.name + ' in ' + project.dir);
   fs.copySync(bindir + '/skeletons/project', project.dir);
+  pkg = fs.readJsonSync(path.join(project.dir, 'package.json'));
+  config = fs.readJsonSync(path.join(project.dir, 'config.json'));
+
   pkg.name = project.dir;
   pkg.version = '0.0.1';
   pkg.main = 'app.js';
-  pkg.dependencies = {
-    'turnpike': turnpike_pkg.version
-  };
+  pkg.dependencies = pkg.dependencies || {};
+  pkg.dependencies.turnpike = turnpike_pkg.version
+
   fs.writeJsonSync(path.join(project.dir, 'package.json'), pkg);
   config.sitename = project.name;
   fs.writeJsonSync(path.join(project.dir, 'config.json'), config);
