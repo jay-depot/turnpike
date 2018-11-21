@@ -40,7 +40,7 @@ That's really all that's needed. Bug reports missing any of this information wil
 
 If you are requesting new features, please be sure to include the following:
 
- 1. A breif overview of the feature
+ 1. A brief overview of the feature
  2. Why it would be useful (include examples)
  3. A broad overview of what you think the API for your issue should look like
 
