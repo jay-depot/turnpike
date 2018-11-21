@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.org/jay-depot/turnpike.png?branch=master)](https://travis-ci.org/jay-depot/turnpike)
 [![Code Climate](https://codeclimate.com/github/jay-depot/turnpike.png)](https://codeclimate.com/github/jay-depot/turnpike)
 [![Test Coverage](https://codeclimate.com/github/jay-depot/turnpike/badges/coverage.svg)](https://codeclimate.com/github/jay-depot/turnpike/coverage)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjay-depot%2Fturnpike.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjay-depot%2Fturnpike?ref=badge_shield)
 
 A stylistically permissive, flexible HMVC framework for Node.js
 
@@ -41,3 +42,7 @@ Then just visit http://localhost:1337
 ## Contributing
 Contributions are always welcome. The most useful contribution is simply grabbing the framework, playing with it and giving suggestions for what it needs to be complete. Aside from that, documentation and tests are probably the biggest needs.
 Once the framework is fully instrumented with tests and code coverage detection, I will mark that as the 1.0.0 release.
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjay-depot%2Fturnpike.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjay-depot%2Fturnpike?ref=badge_large)
