@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.org/jay-depot/turnpike.png?branch=master)](https://travis-ci.org/jay-depot/turnpike)
 [![Code Climate](https://codeclimate.com/github/jay-depot/turnpike.png)](https://codeclimate.com/github/jay-depot/turnpike)
 [![Test Coverage](https://codeclimate.com/github/jay-depot/turnpike/badges/coverage.svg)](https://codeclimate.com/github/jay-depot/turnpike/coverage)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjay-depot%2Fturnpike.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjay-depot%2Fturnpike?ref=badge_shield)
 
 A stylistically permissive, flexible MVC framework for Node.js
 
@@ -37,3 +38,6 @@ Then just visit http://localhost:1337
 
 ## Contributing
 See CONTRIBUTING.md
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjay-depot%2Fturnpike.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjay-depot%2Fturnpike?ref=badge_large)
