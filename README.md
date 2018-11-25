@@ -5,7 +5,7 @@
 
 A stylistically permissive, flexible MVC framework for Node.js
 
-Built on Connect, Turnpike aims to provide a similar productivity boost as other MVC frameworks that include code generators. Developers coming from Rails or Symfony should find many of the idioms familiar.
+Built on Express, Turnpike aims to provide a similar productivity boost as other MVC frameworks that include code generators. Developers coming from Rails or Symfony should find many of the idioms familiar.
 
 ## Features:
  - Automatically manages worker processes for high availability and optimal performance in a multi-CPU production environment.
